@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mouse Click Test</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var count = 0;
+
+		function a() {
+			count = count + 1;
+			console.log("click=" + count);
+		}
+
+		function b() {
+			count = 0;
+			console.clear();
+		}
+	</script>
+	<form onsubmit="return false;">
+		<h3>MouseClickTest</h3>
+		<input type="button" value="click" onclick="a()" style="width: 500px; height: 300px;">
+		<br>
+		<input type="button" value="clear" onclick="b()" style="width: 500px; height: 100px;">
+</body>
+</html>
