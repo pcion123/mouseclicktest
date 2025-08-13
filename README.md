@@ -7,7 +7,7 @@
 - **☀️ Light Mode**: 清爽淺色主題，提供經典體驗
 - **⚡ 一鍵切換**: 主題偏好自動保存，無縫切換體驗
 
-### 🎯 智能檢測系統se: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![HTML5](https://img.shields.io/badge/HTML5-Ready-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 
