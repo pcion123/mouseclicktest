@@ -1,27 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<title>Mouse Click Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑鼠按鍵異常檢測工具</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
-	<script type="text/javascript">
-		var count = 0;
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 頂部控制面板 -->
+        <header class="control-panel">
+            <div class="control-group">
+                <h1>滑鼠按鍵異常檢測工具</h1>
+                <div class="mode-selector">
+                    <label for="testMode">測試模式：</label>
+                    <select id="testMode">
+                        <option value="free">自由測試</option>
+                        <option value="rhythm">節奏測試</option>
+                        <option value="endurance">耐久測試</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-buttons">
+                <button id="startBtn" class="btn btn-primary">開始測試</button>
+                <button id="stopBtn" class="btn btn-secondary" disabled>停止測試</button>
+                <button id="resetBtn" class="btn btn-warning">重置</button>
+                <button id="settingsBtn" class="btn btn-info">設定</button>
+            </div>
+        </header>
 
-		function a() {
-			count = count + 1;
-			console.log("click=" + count);
-		}
+        <!-- 主要內容區域 -->
+        <main class="main-content">
+            <!-- 左側測試區域 -->
+            <section class="test-area">
+                <div class="test-zone" id="testZone">
+                    <div class="click-target" id="clickTarget">
+                        <span class="target-text">點擊此區域開始測試</span>
+                        <div class="click-feedback" id="clickFeedback"></div>
+                    </div>
+                </div>
+                
+                <!-- 即時提示 -->
+                <div class="status-bar">
+                    <span id="statusText">準備開始測試</span>
+                    <span id="currentMode">模式: 自由測試</span>
+                </div>
+            </section>
 
-		function b() {
-			count = 0;
-			console.clear();
-		}
-	</script>
-	<form onsubmit="return false;">
-		<h3>MouseClickTest</h3>
-		<input type="button" value="click" onclick="a()" style="width: 500px; height: 300px;">
-		<br>
-		<input type="button" value="clear" onclick="b()" style="width: 500px; height: 100px;">
+            <!-- 右側統計面板 -->
+            <aside class="stats-panel">
+                <div class="stats-header">
+                    <h2>統計資訊</h2>
+                    <div class="test-timer">
+                        <span>測試時間: </span>
+                        <span id="testTimer">00:00</span>
+                    </div>
+                </div>
+
+                <!-- 基本統計 -->
+                <div class="stats-section">
+                    <h3>點擊統計</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">總點擊數</span>
+                            <span class="stat-value" id="totalClicks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">有效點擊</span>
+                            <span class="stat-value valid" id="validClicks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">異常點擊</span>
+                            <span class="stat-value anomaly" id="anomalousClicks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">異常率</span>
+                            <span class="stat-value" id="anomalyRate">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 間隔統計 -->
+                <div class="stats-section">
+                    <h3>點擊間隔</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">平均間隔</span>
+                            <span class="stat-value" id="avgInterval">0ms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">最短間隔</span>
+                            <span class="stat-value" id="minInterval">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">最長間隔</span>
+                            <span class="stat-value" id="maxInterval">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">當前間隔</span>
+                            <span class="stat-value" id="currentInterval">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 異常檢測結果 -->
+                <div class="stats-section">
+                    <h3>異常檢測</h3>
+                    <div class="anomaly-types">
+                        <div class="anomaly-item">
+                            <span class="anomaly-label">重複點擊</span>
+                            <span class="anomaly-count" id="duplicateCount">0</span>
+                        </div>
+                        <div class="anomaly-item">
+                            <span class="anomaly-label">間隔異常</span>
+                            <span class="anomaly-count" id="intervalAnomalyCount">0</span>
+                        </div>
+                        <div class="anomaly-item">
+                            <span class="anomaly-label">連擊異常</span>
+                            <span class="anomaly-count" id="burstCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 健康度指示器 -->
+                <div class="stats-section">
+                    <h3>滑鼠健康度</h3>
+                    <div class="health-indicator">
+                        <div class="health-bar">
+                            <div class="health-fill" id="healthFill"></div>
+                        </div>
+                        <div class="health-text" id="healthText">良好</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- 底部圖表區域 -->
+        <section class="charts-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3>點擊時間軸</h3>
+                    <div class="chart-controls">
+                        <button class="btn-small" id="clearChartBtn">清除圖表</button>
+                    </div>
+                </div>
+                <canvas id="timelineChart" width="800" height="200"></canvas>
+            </div>
+
+            <div class="events-container">
+                <div class="events-header">
+                    <h3>異常事件記錄</h3>
+                    <span class="event-count" id="eventCount">0 個異常事件</span>
+                </div>
+                <div class="events-list" id="eventsList">
+                    <div class="no-events">暫無異常事件</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 設定對話框 -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>檢測設定</h3>
+                <button class="close-btn" id="closeSettingsBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label>重複點擊檢測窗口 (ms):</label>
+                    <input type="number" id="duplicateWindow" value="50" min="10" max="200">
+                </div>
+                <div class="setting-group">
+                    <label>連擊檢測窗口 (ms):</label>
+                    <input type="number" id="burstWindow" value="500" min="100" max="1000">
+                </div>
+                <div class="setting-group">
+                    <label>連擊次數閾值:</label>
+                    <input type="number" id="burstThreshold" value="3" min="2" max="10">
+                </div>
+                <div class="setting-group">
+                    <label>異常間隔閾值 (ms):</label>
+                    <input type="number" id="intervalThreshold" value="50" min="10" max="100">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="saveSettingsBtn">保存設定</button>
+                <button class="btn btn-secondary" id="cancelSettingsBtn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 文件 -->
+    <script src="js/config.js"></script>
+    <script src="js/detector.js"></script>
+    <script src="js/statistics.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
