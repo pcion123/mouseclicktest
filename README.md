@@ -1,11 +1,4 @@
-# 🖱️ 滑鼠按鍵異常檢測工具
-
-## ✨ 主要特色
-
-### 🎨 雙主題設計
-- **🌙 Dark Mode**: 護眼深色主題，適合長時間使用
-- **☀️ Light Mode**: 清爽淺色主題，提供經典體驗
-- **⚡ 一鍵切換**: 主題偏好自動保存，無縫切換體驗
+﻿# 🖱️ 滑鼠按鍵異常檢測工具
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -27,12 +20,12 @@
 
 ## ✨ 主要特色
 
-### � 雙主題設計
+### 🎨 雙主題設計
 - **🌙 Dark Mode**: 護眼深色主題，適合長時間使用
 - **☀️ Light Mode**: 清爽淺色主題，提供經典體驗
 - **⚡ 一鍵切換**: 主題偏好自動保存，無縫切換體驗
 
-### �🎯 智能檢測系統
+### 🎯 智能檢測系統
 - **多層次異常識別**: 重複點擊檢測、間隔異常分析、連擊模式識別
 - **即時回饋機制**: 點擊響應 < 10ms，即時視覺反饋（綠色/紅色波紋效果）
 - **健康度評估**: 基於統計算法的 0-100 分健康度評分系統
@@ -54,7 +47,6 @@
 - **本地數據持久化**: LocalStorage 保存設定和測試歷史
 - **響應式設計**: 支援桌面、平板、手機等多種設備
 - **離線使用**: 純前端實現，無需網路連接
-- **🌙 深淺主題**: 內建 Dark/Light 模式切換，護眼又專業
 
 ## 🚀 快速開始
 
@@ -159,10 +151,9 @@ mouseclicktest/
 │   └── app.js                # 主應用程式控制器
 ├── 📁 assets/                 # 靜態資源
 │   └── screenshots/          # 應用截圖
-│       ├── dark-mode-preview.png    # Dark Mode 預覽
-│       └── light-mode-preview.png   # Light Mode 預覽
-├── 📄 test.html               # 單機測試指南
-├── 📄 SPECIFICATION.md        # 詳細技術規格
+│       ├── dark-mode-preview.svg    # Dark Mode 預覽
+│       └── light-mode-preview.svg   # Light Mode 預覽
+├── 📄 README.md               # 項目說明文檔
 ├── 📄 LICENSE                 # MIT 開源協議
 └── 📄 .gitignore              # Git 忽略規則
 ```
@@ -225,7 +216,7 @@ CONFIG.detection = {
 ## 🧪 測試與品質保證
 
 ### 自動化測試
-訪問 [test.html](test.html) 獲取完整的測試指南：
+完整的測試指南：
 
 1. **基本載入測試**: 頁面渲染、資源載入
 2. **功能測試**: 點擊檢測、異常識別、模式切換
@@ -353,4 +344,6 @@ git push origin feature/your-feature-name
 
 Made with ❤️ by [pcion123](https://github.com/pcion123)
 
-</div>
+</div>滑鼠按鍵異常檢測工具
+
+一個專業的前端網頁應用程式
