@@ -1,16 +1,38 @@
 # 🖱️ 滑鼠按鍵異常檢測工具
 
+## ✨ 主要特色
+
+### 🎨 雙主題設計
+- **🌙 Dark Mode**: 護眼深色主題，適合長時間使用
+- **☀️ Light Mode**: 清爽淺色主題，提供經典體驗
+- **⚡ 一鍵切換**: 主題偏好自動保存，無縫切換體驗
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![HTML5](https://img.shields.io/badge/HTML5-Ready-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 
 一個專業的前端網頁應用程式，專為檢測滑鼠按鍵異常行為而設計。透過智能算法識別重複點擊、按鍵彈跳、點擊延遲等硬體問題，為電競玩家、硬體測試人員和一般用戶提供可靠的滑鼠健康診斷工具。
 
-![滑鼠檢測工具預覽](https://via.placeholder.com/800x400/667eea/ffffff?text=Mouse+Click+Test+Tool)
+## 🖼️ 介面預覽
+
+### 🌙 Dark Mode (深色主題)
+![滑鼠檢測工具 - Dark Mode](assets/screenshots/dark-mode-preview.svg)
+
+### ☀️ Light Mode (淺色主題)  
+![滑鼠檢測工具 - Light Mode](assets/screenshots/light-mode-preview.svg)
+
+> 💡 **主題切換**: 點擊右上角的 🌙/☀️ 按鈕即可在深淺主題間自由切換
+
+> 📸 **截圖說明**: 上方為 SVG 格式的界面預覽圖。如需更新為實際截圖，請將 PNG/JPG 文件放置到 `assets/screenshots/` 目錄中。
 
 ## ✨ 主要特色
 
-### 🎯 智能檢測系統
+### � 雙主題設計
+- **🌙 Dark Mode**: 護眼深色主題，適合長時間使用
+- **☀️ Light Mode**: 清爽淺色主題，提供經典體驗
+- **⚡ 一鍵切換**: 主題偏好自動保存，無縫切換體驗
+
+### �🎯 智能檢測系統
 - **多層次異常識別**: 重複點擊檢測、間隔異常分析、連擊模式識別
 - **即時回饋機制**: 點擊響應 < 10ms，即時視覺反饋（綠色/紅色波紋效果）
 - **健康度評估**: 基於統計算法的 0-100 分健康度評分系統
@@ -32,6 +54,7 @@
 - **本地數據持久化**: LocalStorage 保存設定和測試歷史
 - **響應式設計**: 支援桌面、平板、手機等多種設備
 - **離線使用**: 純前端實現，無需網路連接
+- **🌙 深淺主題**: 內建 Dark/Light 模式切換，護眼又專業
 
 ## 🚀 快速開始
 
@@ -67,11 +90,12 @@ php -S localhost:8000
 ### 📱 使用步驟
 
 1. **選擇測試模式**: 自由測試 / 節奏測試 / 耐久測試
-2. **調整設定** (可選): 點擊設定按鈕自定義檢測參數
-3. **開始測試**: 點擊「開始測試」按鈕
-4. **進行點擊**: 在藍色測試區域內進行點擊
-5. **查看結果**: 觀察實時統計和圖表分析
-6. **停止並查看報告**: 點擊「停止測試」查看詳細結果
+2. **切換主題** (可選): 點擊右上角的 🌙/☀️ 按鈕切換深淺主題
+3. **調整設定** (可選): 點擊設定按鈕自定義檢測參數
+4. **開始測試**: 點擊「開始測試」按鈕
+5. **進行點擊**: 在藍色測試區域內進行點擊
+6. **查看結果**: 觀察實時統計和圖表分析
+7. **停止並查看報告**: 點擊「停止測試」查看詳細結果
 
 ## 🔬 檢測算法詳解
 
@@ -124,7 +148,8 @@ mouseclicktest/
 ├── 📄 index.html              # 主應用程式入口
 ├── 📁 css/                    # 樣式文件
 │   ├── styles.css            # 主要樣式 (布局、主題)
-│   └── components.css        # 組件樣式 (按鈕、對話框、動畫)
+│   ├── components.css        # 組件樣式 (按鈕、對話框、動畫)
+│   └── themes.css            # 主題系統 (Dark/Light 模式)
 ├── 📁 js/                     # JavaScript 模組
 │   ├── config.js             # 配置常數與設定
 │   ├── detector.js           # 核心檢測算法
@@ -132,7 +157,10 @@ mouseclicktest/
 │   ├── chart.js              # Canvas 圖表繪製
 │   ├── ui.js                 # 用戶界面管理
 │   └── app.js                # 主應用程式控制器
-├── 📁 assets/                 # 靜態資源 (預留)
+├── 📁 assets/                 # 靜態資源
+│   └── screenshots/          # 應用截圖
+│       ├── dark-mode-preview.png    # Dark Mode 預覽
+│       └── light-mode-preview.png   # Light Mode 預覽
 ├── 📄 test.html               # 單機測試指南
 ├── 📄 SPECIFICATION.md        # 詳細技術規格
 ├── 📄 LICENSE                 # MIT 開源協議
