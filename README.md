@@ -73,7 +73,7 @@ php -S localhost:8000
 5. **查看結果**: 觀察實時統計和圖表分析
 6. **停止並查看報告**: 點擊「停止測試」查看詳細結果
 
-## � 檢測算法詳解
+## 🔬 檢測算法詳解
 
 ### 重複點擊檢測 (Duplicate Click Detection)
 ```javascript
@@ -220,7 +220,7 @@ CONFIG.detection = {
 ✅ 間隔異常檢測 (< 50ms 間隔)
 ```
 
-## � 數據格式與 API
+## 📊 數據格式與 API
 
 ### 點擊事件數據結構
 ```javascript
@@ -300,7 +300,7 @@ git push origin feature/your-feature-name
 - 保持模組化架構
 - 確保跨瀏覽器相容性
 
-## � 授權與聲明
+## 📄 授權與聲明
 
 本項目使用 [MIT 授權](LICENSE)，允許商業和非商業使用。
 
