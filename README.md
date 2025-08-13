@@ -344,6 +344,4 @@ git push origin feature/your-feature-name
 
 Made with ❤️ by [pcion123](https://github.com/pcion123)
 
-</div>滑鼠按鍵異常檢測工具
-
-一個專業的前端網頁應用程式
+</div>
