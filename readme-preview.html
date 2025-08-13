@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README 預覽測試</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f6f8fa;
+        }
+        
+        .markdown-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2, h3 {
+            color: #24292f;
+        }
+        
+        h2 {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d1d9e0;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            margin-top: 30px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+        
+        blockquote {
+            background: #f6f8fa;
+            border-left: 4px solid #0969da;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        blockquote p {
+            margin: 0;
+            color: #656d76;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .test-status {
+            background: #dff6dd;
+            border: 1px solid #d1e7dd;
+            color: #0a3622;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .error-status {
+            background: #f8d7da;
+            border: 1px solid #f1aeb5;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📖 README.md 截圖預覽測試</h1>
+        <p>模擬 GitHub README.md 中的圖片顯示效果</p>
+    </div>
+    
+    <div class="markdown-content">
+        <h2>🖼️ 介面預覽</h2>
+
+        <h3>🌙 Dark Mode (深色主題)</h3>
+        <img src="assets/screenshots/dark-mode-preview.svg" alt="滑鼠檢測工具 - Dark Mode" id="darkImg">
+
+        <h3>☀️ Light Mode (淺色主題)</h3>
+        <img src="assets/screenshots/light-mode-preview.svg" alt="滑鼠檢測工具 - Light Mode" id="lightImg">
+
+        <blockquote>
+            <p>💡 <strong>主題切換</strong>: 點擊右上角的 🌙/☀️ 按鈕即可在深淺主題間自由切換</p>
+        </blockquote>
+
+        <blockquote>
+            <p>📸 <strong>截圖說明</strong>: 上方為 SVG 格式的界面預覽圖。如需更新為實際截圖，請將 PNG/JPG 文件放置到 <code>assets/screenshots/</code> 目錄中。</p>
+        </blockquote>
+        
+        <div id="status"></div>
+    </div>
+
+    <script>
+        // 檢查圖片載入狀態
+        function checkImageStatus() {
+            const darkImg = document.getElementById('darkImg');
+            const lightImg = document.getElementById('lightImg');
+            const statusDiv = document.getElementById('status');
+            
+            let successCount = 0;
+            let totalImages = 2;
+            
+            function updateStatus() {
+                if (successCount === totalImages) {
+                    statusDiv.innerHTML = `
+                        <div class="test-status">
+                            ✅ <strong>所有截圖載入成功！</strong><br>
+                            README.md 在 GitHub 上將正確顯示這些 SVG 預覽圖。
+                        </div>
+                    `;
+                } else {
+                    statusDiv.innerHTML = `
+                        <div class="error-status">
+                            ❌ <strong>截圖載入失敗</strong><br>
+                            已載入: ${successCount}/${totalImages} 個圖片<br>
+                            請檢查 SVG 文件是否存在且格式正確。
+                        </div>
+                    `;
+                }
+            }
+            
+            darkImg.onload = () => {
+                successCount++;
+                updateStatus();
+            };
+            
+            lightImg.onload = () => {
+                successCount++;
+                updateStatus();
+            };
+            
+            darkImg.onerror = () => updateStatus();
+            lightImg.onerror = () => updateStatus();
+            
+            // 如果圖片已經載入完成
+            if (darkImg.complete) {
+                if (darkImg.naturalWidth > 0) successCount++;
+            }
+            if (lightImg.complete) {
+                if (lightImg.naturalWidth > 0) successCount++;
+            }
+            
+            updateStatus();
+        }
+        
+        // 頁面載入完成後檢查
+        window.addEventListener('load', checkImageStatus);
+    </script>
+</body>
+</html>

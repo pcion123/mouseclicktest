@@ -7,6 +7,7 @@ class UIManager {
         this.initElements();
         this.bindEvents();
         this.loadSettings();
+        this.initTheme();
     }
     
     // 初始化 DOM 元素
@@ -17,6 +18,7 @@ class UIManager {
             stopBtn: document.getElementById('stopBtn'),
             resetBtn: document.getElementById('resetBtn'),
             settingsBtn: document.getElementById('settingsBtn'),
+            themeBtn: document.getElementById('themeBtn'),
             
             // 測試相關
             testMode: document.getElementById('testMode'),
@@ -38,6 +40,12 @@ class UIManager {
             burstThreshold: document.getElementById('burstThreshold'),
             intervalThreshold: document.getElementById('intervalThreshold'),
             
+            // 清除確認對話框
+            clearConfirmModal: document.getElementById('clearConfirmModal'),
+            closeClearConfirmBtn: document.getElementById('closeClearConfirmBtn'),
+            confirmClearBtn: document.getElementById('confirmClearBtn'),
+            cancelClearBtn: document.getElementById('cancelClearBtn'),
+            
             // 圖表控制
             clearChartBtn: document.getElementById('clearChartBtn')
         };
@@ -50,6 +58,7 @@ class UIManager {
         this.elements.stopBtn.addEventListener('click', () => this.stopTest());
         this.elements.resetBtn.addEventListener('click', () => this.resetTest());
         this.elements.settingsBtn.addEventListener('click', () => this.showSettings());
+        this.elements.themeBtn.addEventListener('click', () => this.toggleTheme());
         
         // 測試模式變更
         this.elements.testMode.addEventListener('change', (e) => this.changeMode(e.target.value));
@@ -72,6 +81,14 @@ class UIManager {
         
         // 清除圖表
         this.elements.clearChartBtn.addEventListener('click', () => this.clearChart());
+        
+        // 清除確認對話框事件
+        this.elements.clearConfirmModal.addEventListener('click', (e) => {
+            if (e.target === this.elements.clearConfirmModal) this.hideClearConfirm();
+        });
+        this.elements.closeClearConfirmBtn.addEventListener('click', () => this.hideClearConfirm());
+        this.elements.confirmClearBtn.addEventListener('click', () => this.performClear());
+        this.elements.cancelClearBtn.addEventListener('click', () => this.hideClearConfirm());
         
         // 鍵盤快捷鍵
         document.addEventListener('keydown', (e) => this.handleKeydown(e));
@@ -269,7 +286,61 @@ class UIManager {
     
     // 清除圖表
     clearChart() {
-        this.dispatchEvent('chartClear');
+        // 如果沒有數據，直接返回
+        const hasData = document.querySelectorAll('.event-item').length > 0;
+        if (!hasData) {
+            this.showNotification('圖表已經是空的', 'info');
+            return;
+        }
+        
+        // 顯示確認對話框
+        this.showClearConfirm();
+    }
+    
+    // 顯示清除確認對話框
+    showClearConfirm() {
+        this.elements.clearConfirmModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // 隱藏清除確認對話框
+    hideClearConfirm() {
+        this.elements.clearConfirmModal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    
+    // 執行清除操作
+    performClear() {
+        // 添加清除動畫效果
+        const confirmBtn = this.elements.confirmClearBtn;
+        const clearBtn = this.elements.clearChartBtn;
+        
+        confirmBtn.disabled = true;
+        confirmBtn.querySelector('.btn-text').textContent = '清除中...';
+        confirmBtn.querySelector('.btn-icon').textContent = '⏳';
+        
+        clearBtn.disabled = true;
+        clearBtn.querySelector('.btn-text').textContent = '清除中...';
+        clearBtn.querySelector('.btn-icon').textContent = '⏳';
+        
+        // 延遲執行，讓用戶看到動畫
+        setTimeout(() => {
+            this.dispatchEvent('chartClear');
+            this.hideClearConfirm();
+            
+            // 恢復按鈕狀態
+            setTimeout(() => {
+                confirmBtn.disabled = false;
+                confirmBtn.querySelector('.btn-text').textContent = '確認清除';
+                confirmBtn.querySelector('.btn-icon').textContent = '🗑️';
+                
+                clearBtn.disabled = false;
+                clearBtn.querySelector('.btn-text').textContent = '清除圖表';
+                clearBtn.querySelector('.btn-icon').textContent = '🗑️';
+                
+                this.showNotification('圖表已清除', 'success');
+            }, 300);
+        }, 800);
     }
     
     // 處理鍵盤事件
@@ -371,6 +442,33 @@ class UIManager {
             currentMode: this.currentMode,
             settings: this.getStoredSettings()
         };
+    }
+    
+    // 主題切換功能
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        // 更新按鈕圖標
+        this.elements.themeBtn.textContent = newTheme === 'light' ? '☀️' : '🌙';
+        
+        // 保存主題設定
+        localStorage.setItem('mousetest-theme', newTheme);
+        
+        // 通知圖表更新顏色
+        this.dispatchEvent('themeChanged', { theme: newTheme });
+        
+        // 顯示切換通知
+        this.showNotification(`已切換至${newTheme === 'light' ? '淺色' : '深色'}主題`, 'success');
+    }
+    
+    // 初始化主題
+    initTheme() {
+        const savedTheme = localStorage.getItem('mousetest-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        this.elements.themeBtn.textContent = savedTheme === 'light' ? '☀️' : '🌙';
     }
 }
 

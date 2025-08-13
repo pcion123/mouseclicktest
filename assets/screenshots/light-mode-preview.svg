@@ -1,0 +1,88 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lightBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lightPanelBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#f8f9fa;stop-opacity:0.95" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="1200" height="800" fill="url(#lightBg)"/>
+  
+  <!-- 頂部控制面板 -->
+  <rect x="40" y="40" width="1120" height="80" rx="15" fill="url(#lightPanelBg)" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <text x="70" y="75" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4a5568">🖱️ 滑鼠按鍵異常檢測工具</text>
+  <rect x="800" y="55" width="80" height="30" rx="6" fill="#667eea"/>
+  <text x="830" y="75" font-family="Arial, sans-serif" font-size="12" fill="white">開始測試</text>
+  <rect x="890" y="55" width="60" height="30" rx="6" fill="#718096"/>
+  <text x="912" y="75" font-family="Arial, sans-serif" font-size="12" fill="white">停止</text>
+  <circle cx="1100" cy="70" r="20" fill="#f8f9fa" stroke="rgba(0,0,0,0.1)"/>
+  <text x="1095" y="75" font-family="Arial, sans-serif" font-size="16">☀️</text>
+  
+  <!-- 主要內容區域 -->
+  <!-- 測試區域 -->
+  <rect x="40" y="140" width="720" height="480" rx="15" fill="url(#lightPanelBg)" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="70" y="180" width="660" height="380" rx="12" fill="none" stroke="#cbd5e0" stroke-width="3" stroke-dasharray="10,5"/>
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="18" fill="#718096" text-anchor="middle">點擊此區域開始測試</text>
+  
+  <!-- 統計面板 -->
+  <rect x="780" y="140" width="380" height="480" rx="15" fill="url(#lightPanelBg)" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <text x="810" y="175" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4a5568">統計資訊</text>
+  
+  <!-- 統計項目 -->
+  <rect x="810" y="200" width="160" height="80" rx="8" fill="#f8f9fa" stroke="rgba(0,0,0,0.1)"/>
+  <text x="890" y="225" font-family="Arial, sans-serif" font-size="12" fill="#6c757d" text-anchor="middle">總點擊數</text>
+  <text x="890" y="250" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#495057" text-anchor="middle">42</text>
+  
+  <rect x="980" y="200" width="160" height="80" rx="8" fill="#f8f9fa" stroke="rgba(0,0,0,0.1)"/>
+  <text x="1060" y="225" font-family="Arial, sans-serif" font-size="12" fill="#6c757d" text-anchor="middle">有效點擊</text>
+  <text x="1060" y="250" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#28a745" text-anchor="middle">40</text>
+  
+  <rect x="810" y="290" width="160" height="80" rx="8" fill="#f8f9fa" stroke="rgba(0,0,0,0.1)"/>
+  <text x="890" y="315" font-family="Arial, sans-serif" font-size="12" fill="#6c757d" text-anchor="middle">異常檢測</text>
+  <text x="890" y="340" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#dc3545" text-anchor="middle">2</text>
+  
+  <rect x="980" y="290" width="160" height="80" rx="8" fill="#f8f9fa" stroke="rgba(0,0,0,0.1)"/>
+  <text x="1060" y="315" font-family="Arial, sans-serif" font-size="12" fill="#6c757d" text-anchor="middle">健康度</text>
+  <text x="1060" y="340" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#28a745" text-anchor="middle">95%</text>
+  
+  <!-- 健康度條 -->
+  <rect x="810" y="400" width="330" height="20" rx="10" fill="#e9ecef" stroke="rgba(0,0,0,0.1)"/>
+  <rect x="810" y="400" width="280" height="20" rx="10" fill="url(#lightHealthGradient)"/>
+  <defs>
+    <linearGradient id="lightHealthGradient">
+      <stop offset="0%" style="stop-color:#28a745"/>
+      <stop offset="100%" style="stop-color:#20c997"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 圖表區域 -->
+  <rect x="40" y="640" width="720" height="120" rx="15" fill="url(#lightPanelBg)" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <text x="70" y="670" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#4a5568">點擊時間軸</text>
+  <rect x="650" y="650" width="100" height="30" rx="6" fill="url(#lightHealthGradient)"/>
+  <text x="690" y="670" font-family="Arial, sans-serif" font-size="12" fill="white">🗑️ 清除圖表</text>
+  
+  <!-- 模擬圖表線 -->
+  <polyline points="70,720 120,700 170,710 220,690 270,705 320,680 370,695 420,675 470,690 520,670 570,685 620,665 670,680" 
+            fill="none" stroke="#28a745" stroke-width="2"/>
+  <circle cx="170" cy="710" r="3" fill="#dc3545"/>
+  <circle cx="420" cy="675" r="3" fill="#dc3545"/>
+  
+  <!-- 事件記錄 -->
+  <rect x="780" y="640" width="380" height="120" rx="15" fill="url(#lightPanelBg)" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <text x="810" y="670" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#4a5568">異常事件記錄</text>
+  <rect x="810" y="680" width="330" height="25" rx="4" fill="#f8f9fa" stroke="rgba(0,0,0,0.1)"/>
+  <text x="820" y="697" font-family="Arial, sans-serif" font-size="11" fill="#dc3545">⚠️ 重複點擊</text>
+  <text x="1050" y="697" font-family="Arial, sans-serif" font-size="11" fill="#6c757d">00:32:14</text>
+  
+  <rect x="810" y="710" width="330" height="25" rx="4" fill="#f8f9fa" stroke="rgba(0,0,0,0.1)"/>
+  <text x="820" y="727" font-family="Arial, sans-serif" font-size="11" fill="#dc3545">⚡ 連擊異常</text>
+  <text x="1050" y="727" font-family="Arial, sans-serif" font-size="11" fill="#6c757d">00:31:08</text>
+  
+  <!-- 水印 -->
+  <text x="600" y="790" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.5)" text-anchor="middle">☀️ Light Mode Preview</text>
+</svg>

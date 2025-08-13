@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑鼠檢測工具 - 截圖預覽</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .screenshot-section {
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+        }
+        
+        .screenshot-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .screenshot-container {
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+        
+        .error-message {
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 1.1em;
+            padding: 40px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            border: 2px dashed #ff6b6b;
+        }
+        
+        .success-message {
+            text-align: center;
+            color: #51cf66;
+            font-size: 1.1em;
+            padding: 20px;
+            background: rgba(81, 207, 102, 0.1);
+            border-radius: 10px;
+            border: 2px solid #51cf66;
+            margin-top: 20px;
+        }
+        
+        .instructions {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .instructions h3 {
+            margin-top: 0;
+            color: #ffd93d;
+        }
+        
+        .instructions ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .instructions li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .instructions li:before {
+            content: "📁";
+            position: absolute;
+            left: 0;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .back-link a {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🖼️ 截圖預覽測試</h1>
+            <p>滑鼠按鍵異常檢測工具 - 界面展示</p>
+        </div>
+
+        <div class="screenshot-section">
+            <h2>🌙 Dark Mode (深色主題)</h2>
+            <div class="screenshot-container">
+                <img src="assets/screenshots/dark-mode-preview.svg" 
+                     alt="Dark Mode 預覽" 
+                     onerror="this.parentElement.innerHTML='<div class=&quot;error-message&quot;>❌ Dark Mode 截圖未找到<br>SVG 文件可能有問題</div>'">
+            </div>
+        </div>
+
+        <div class="screenshot-section">
+            <h2>☀️ Light Mode (淺色主題)</h2>
+            <div class="screenshot-container">
+                <img src="assets/screenshots/light-mode-preview.svg" 
+                     alt="Light Mode 預覽"
+                     onerror="this.parentElement.innerHTML='<div class=&quot;error-message&quot;>❌ Light Mode 截圖未找到<br>SVG 文件可能有問題</div>'">
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📝 如何添加截圖</h3>
+            <ul>
+                <li>將 Dark Mode 截圖命名為 <code>dark-mode-preview.png</code></li>
+                <li>將 Light Mode 截圖命名為 <code>light-mode-preview.png</code></li>
+                <li>放置到 <code>assets/screenshots/</code> 目錄中</li>
+                <li>刷新此頁面查看效果</li>
+            </ul>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">🖱️ 返回主應用</a>
+        </div>
+    </div>
+
+    <script>
+        // 檢查截圖是否成功載入
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('img');
+            let loadedCount = 0;
+            
+            images.forEach(img => {
+                if (img.complete && img.naturalHeight !== 0) {
+                    loadedCount++;
+                }
+            });
+            
+            if (loadedCount === images.length) {
+                const successDiv = document.createElement('div');
+                successDiv.className = 'success-message';
+                successDiv.innerHTML = '✅ 所有截圖載入成功！README.md 將正確顯示這些圖片。';
+                document.querySelector('.container').appendChild(successDiv);
+            }
+        });
+    </script>
+</body>
+</html>

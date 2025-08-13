@@ -69,6 +69,13 @@ settings.local.json
 .deploy/
 .publish/
 
+# ===== 項目資源 =====
+# 保留項目截圖和重要資源
+# !assets/screenshots/*.png
+# !assets/screenshots/*.jpg
+# !assets/icons/
+# !assets/logo/
+
 # ===== 未來擴展預留 =====
 # 如果未來需要使用 Node.js
 node_modules/
