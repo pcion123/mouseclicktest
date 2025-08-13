@@ -5,14 +5,45 @@ class ChartManager {
         this.ctx = this.canvas.getContext('2d');
         this.data = [];
         this.maxPoints = CONFIG.ui.chartMaxPoints;
-        this.colors = {
-            normal: '#28a745',
-            anomaly: '#dc3545',
-            grid: '#e2e8f0',
-            text: '#6c757d',
-            background: '#ffffff'
-        };
+        this.initColors();
         this.setupCanvas();
+        this.bindThemeEvents();
+    }
+    
+    // 初始化顏色配置
+    initColors() {
+        this.updateColors();
+    }
+    
+    // 更新顏色配置
+    updateColors() {
+        const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+        
+        if (theme === 'light') {
+            this.colors = {
+                normal: '#28a745',
+                anomaly: '#dc3545',
+                grid: '#e2e8f0',
+                text: '#6c757d',
+                background: '#ffffff'
+            };
+        } else {
+            this.colors = {
+                normal: '#22c55e',
+                anomaly: '#ef4444',
+                grid: '#475569',
+                text: '#94a3b8',
+                background: '#0f172a'
+            };
+        }
+    }
+    
+    // 綁定主題切換事件
+    bindThemeEvents() {
+        document.addEventListener('mousetest:themeChanged', () => {
+            this.updateColors();
+            this.draw();
+        });
     }
     
     // 設置畫布
@@ -171,7 +202,8 @@ class ChartManager {
             
             // 異常點添加邊框
             if (point.hasAnomaly) {
-                this.ctx.strokeStyle = '#ffffff';
+                const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+                this.ctx.strokeStyle = theme === 'light' ? '#ffffff' : '#1e293b';
                 this.ctx.lineWidth = 1;
                 this.ctx.stroke();
             }
@@ -249,7 +281,8 @@ class ChartManager {
         this.ctx.arc(legendX, legendY + 20, 4, 0, Math.PI * 2);
         this.ctx.fill();
         
-        this.ctx.strokeStyle = '#ffffff';
+        const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+        this.ctx.strokeStyle = theme === 'light' ? '#ffffff' : '#1e293b';
         this.ctx.lineWidth = 1;
         this.ctx.stroke();
         

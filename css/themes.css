@@ -1,0 +1,571 @@
+/* 主題系統 - 支援 Light 和 Dark 模式 */
+
+/* 預設為 Dark 模式 */
+:root {
+    /* Dark Mode 配色變數 */
+    --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    --bg-secondary: rgba(30, 41, 59, 0.95);
+    --bg-tertiary: #0f172a;
+    --bg-hover: #1e293b;
+    
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e0;
+    --text-muted: #94a3b8;
+    
+    --border-primary: rgba(255, 255, 255, 0.1);
+    --border-secondary: #475569;
+    
+    --accent-primary: #667eea;
+    --accent-secondary: #764ba2;
+    
+    --success: #22c55e;
+    --success-light: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #0ea5e9;
+    
+    --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-secondary: 0 6px 20px rgba(0, 0, 0, 0.4);
+    
+    --grid-color: #475569;
+    --chart-bg: #0f172a;
+}
+
+/* Light Mode 配色變數 */
+[data-theme="light"] {
+    --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-secondary: rgba(255, 255, 255, 0.95);
+    --bg-tertiary: #f8f9fa;
+    --bg-hover: #e9ecef;
+    
+    --text-primary: #333;
+    --text-secondary: #4a5568;
+    --text-muted: #6c757d;
+    
+    --border-primary: #e2e8f0;
+    --border-secondary: #cbd5e0;
+    
+    --accent-primary: #667eea;
+    --accent-secondary: #764ba2;
+    
+    --success: #28a745;
+    --success-light: #20c997;
+    --warning: #ed8936;
+    --error: #dc3545;
+    --info: #3182ce;
+    
+    --shadow-primary: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --shadow-secondary: 0 6px 20px rgba(0, 0, 0, 0.15);
+    
+    --grid-color: #e2e8f0;
+    --chart-bg: #ffffff;
+}
+
+/* 主題切換按鈕樣式 */
+#themeBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.4s ease;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+#themeBtn:hover {
+    transform: translateY(-2px) rotate(15deg) scale(1.1);
+    box-shadow: var(--shadow-secondary);
+    background: var(--bg-hover);
+}
+
+#themeBtn:active {
+    transform: translateY(0) rotate(0deg) scale(1);
+}
+
+/* 主題切換按鈕動畫效果 */
+#themeBtn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, var(--accent-primary), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+#themeBtn:hover::before {
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+}
+
+/* 主題切換動畫 */
+* {
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, 
+                background-image 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 主體元素的特殊過渡效果 */
+body {
+    transition: background 0.6s ease, color 0.4s ease;
+}
+
+.control-panel,
+.test-area,
+.stats-panel,
+.chart-container,
+.events-container,
+.modal-content {
+    transition: background 0.5s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 覆蓋原有樣式以使用 CSS 變數 */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.control-panel,
+.test-area,
+.stats-panel,
+.chart-container,
+.events-container {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
+}
+
+.control-group h1 {
+    color: var(--text-primary);
+}
+
+.mode-selector label {
+    color: var(--text-secondary);
+}
+
+.mode-selector select {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-secondary);
+}
+
+.test-zone {
+    border-color: var(--border-secondary);
+}
+
+.target-text {
+    color: var(--text-muted);
+}
+
+.status-bar {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+}
+
+.stats-header h2 {
+    color: var(--text-primary);
+}
+
+.stats-header {
+    border-bottom-color: var(--border-secondary);
+}
+
+.stats-section h3 {
+    color: var(--text-secondary);
+}
+
+.stat-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+}
+
+.stat-item:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-secondary);
+}
+
+.stat-label {
+    color: var(--text-muted);
+}
+
+.stat-value {
+    color: var(--text-primary);
+}
+
+.stat-value.valid {
+    color: var(--success);
+}
+
+.stat-value.anomaly {
+    color: var(--error);
+}
+
+.anomaly-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-left-color: var(--error);
+}
+
+.anomaly-label {
+    color: var(--text-primary);
+}
+
+.anomaly-count {
+    color: var(--error);
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.health-bar {
+    background: var(--bg-hover);
+    border: 1px solid var(--border-primary);
+}
+
+.health-fill {
+    background: linear-gradient(90deg, var(--success), var(--success-light));
+}
+
+.health-text {
+    color: var(--success);
+}
+
+.chart-header,
+.events-header {
+    border-bottom-color: var(--border-secondary);
+}
+
+.chart-header h3,
+.events-header h3 {
+    color: var(--text-primary);
+}
+
+.event-count {
+    color: var(--text-muted);
+}
+
+#timelineChart {
+    background: var(--chart-bg);
+    border-color: var(--border-secondary);
+}
+
+.no-events {
+    color: var(--text-muted);
+}
+
+.event-item {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-left-color: var(--error);
+}
+
+.event-item:hover {
+    background: var(--bg-hover);
+    border-color: var(--border-secondary);
+}
+
+.event-time {
+    color: var(--text-primary);
+}
+
+.event-type {
+    color: var(--error);
+    background: rgba(239, 68, 68, 0.2);
+}
+
+.event-details {
+    color: var(--text-muted);
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="light"] .modal {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: var(--bg-hover);
+    border: 1px solid var(--border-primary);
+}
+
+.modal-header {
+    border-bottom-color: var(--border-secondary);
+}
+
+.modal-header h3 {
+    color: var(--text-primary);
+}
+
+.close-btn {
+    color: var(--text-muted);
+}
+
+.close-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.setting-group label {
+    color: var(--text-secondary);
+}
+
+.setting-group input {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-secondary);
+}
+
+.modal-footer {
+    border-top-color: var(--border-secondary);
+}
+
+/* 狀態指示器顏色調整 */
+.status-indicator.good {
+    background: var(--success);
+}
+
+.status-indicator.warning {
+    background: var(--warning);
+}
+
+.status-indicator.error {
+    background: var(--error);
+}
+
+/* Light mode 特殊調整 */
+[data-theme="light"] .anomaly-count {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+[data-theme="light"] .event-type {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+/* 清除圖表按鈕特殊樣式 */
+.btn-chart-clear {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--error) 0%, #be185d 100%);
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-chart-clear:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    background: linear-gradient(135deg, #dc2626 0%, #a21caf 100%);
+}
+
+.btn-chart-clear:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.btn-chart-clear:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-chart-clear .btn-icon {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.btn-chart-clear:hover .btn-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.btn-chart-clear .btn-text {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* 清除按鈕的波紋效果 */
+.btn-chart-clear::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.btn-chart-clear:hover::before {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+}
+
+/* Light mode 下的清除按鈕調整 */
+[data-theme="light"] .btn-chart-clear {
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.25);
+}
+
+[data-theme="light"] .btn-chart-clear:hover {
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.35);
+}
+
+/* 清除確認對話框樣式 */
+.modal-small .modal-content {
+    max-width: 400px;
+    width: 85%;
+}
+
+.confirm-message {
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.warning-text {
+    color: var(--error);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.modal-footer .btn-chart-clear {
+    margin-right: auto;
+}
+
+/* 確認按鈕的特殊效果 */
+#confirmClearBtn {
+    background: linear-gradient(135deg, var(--error) 0%, #dc2626 100%);
+    animation: pulse-danger 2s infinite;
+}
+
+@keyframes pulse-danger {
+    0% { box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); }
+    50% { box-shadow: 0 4px 20px rgba(239, 68, 68, 0.5); }
+    100% { box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); }
+}
+
+#confirmClearBtn:hover {
+    animation: none;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+}
+
+/* 響應式設計 - 小屏幕優化 */
+@media (max-width: 768px) {
+    .btn-chart-clear {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    
+    .btn-chart-clear .btn-icon {
+        font-size: 13px;
+    }
+    
+    .chart-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .modal-small .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .confirm-message {
+        font-size: 14px;
+    }
+}
+
+/* 高對比度模式支援 */
+@media (prefers-contrast: high) {
+    .btn-chart-clear {
+        border: 2px solid white;
+    }
+    
+    .btn-chart-clear:hover {
+        border-color: #fbbf24;
+    }
+}
+
+/* 減少動畫偏好支援 */
+@media (prefers-reduced-motion: reduce) {
+    .btn-chart-clear,
+    .btn-chart-clear::before,
+    .btn-chart-clear .btn-icon {
+        transition: none;
+        animation: none;
+    }
+    
+    #confirmClearBtn {
+        animation: none;
+    }
+}
+
+/* 工具提示樣式增強 */
+.btn-chart-clear[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-primary);
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+.btn-chart-clear[title]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--border-primary);
+    margin-bottom: -1px;
+}
+
+/* 禁用狀態下的特殊樣式 */
+.btn-chart-clear:disabled {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.btn-chart-clear:disabled .btn-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

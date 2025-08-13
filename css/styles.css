@@ -7,9 +7,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
     min-height: 100vh;
-    color: #333;
+    color: #e2e8f0;
 }
 
 .container {
@@ -20,19 +20,20 @@ body {
 
 /* 頂部控制面板 */
 .control-panel {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 41, 59, 0.95);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .control-group h1 {
-    color: #4a5568;
+    color: #f1f5f9;
     margin-bottom: 10px;
     font-size: 1.8em;
     font-weight: 600;
@@ -46,14 +47,15 @@ body {
 
 .mode-selector label {
     font-weight: 500;
-    color: #666;
+    color: #cbd5e0;
 }
 
 .mode-selector select {
     padding: 8px 12px;
-    border: 2px solid #e2e8f0;
+    border: 2px solid #475569;
     border-radius: 8px;
-    background: white;
+    background: #1e293b;
+    color: #e2e8f0;
     font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -62,7 +64,7 @@ body {
 .mode-selector select:focus {
     outline: none;
     border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
 .control-buttons {
@@ -85,7 +87,7 @@ body {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .btn:active {
@@ -104,17 +106,17 @@ body {
 }
 
 .btn-secondary {
-    background: #718096;
-    color: white;
+    background: #475569;
+    color: #e2e8f0;
 }
 
 .btn-warning {
-    background: #ed8936;
+    background: #f59e0b;
     color: white;
 }
 
 .btn-info {
-    background: #3182ce;
+    background: #0ea5e9;
     color: white;
 }
 
@@ -133,17 +135,18 @@ body {
 
 /* 測試區域 */
 .test-area {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 41, 59, 0.95);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .test-zone {
     height: 400px;
     position: relative;
-    border: 3px dashed #cbd5e0;
+    border: 3px dashed #475569;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -153,7 +156,7 @@ body {
 
 .test-zone.active {
     border-color: #667eea;
-    background: rgba(102, 126, 234, 0.05);
+    background: rgba(102, 126, 234, 0.1);
 }
 
 .click-target {
@@ -170,13 +173,13 @@ body {
 }
 
 .click-target:hover {
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(102, 126, 234, 0.15);
 }
 
 .target-text {
     font-size: 1.5em;
     font-weight: 500;
-    color: #718096;
+    color: #94a3b8;
     pointer-events: none;
 }
 
@@ -189,7 +192,8 @@ body {
 .status-bar {
     margin-top: 15px;
     padding: 12px;
-    background: #f7fafc;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
@@ -200,11 +204,12 @@ body {
 
 /* 統計面板 */
 .stats-panel {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 41, 59, 0.95);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     height: fit-content;
 }
 
@@ -214,11 +219,11 @@ body {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 2px solid #475569;
 }
 
 .stats-header h2 {
-    color: #4a5568;
+    color: #f1f5f9;
     font-size: 1.4em;
 }
 
@@ -234,7 +239,7 @@ body {
 }
 
 .stats-section h3 {
-    color: #4a5568;
+    color: #cbd5e0;
     font-size: 1.1em;
     margin-bottom: 15px;
     font-weight: 600;
@@ -247,7 +252,8 @@ body {
 }
 
 .stat-item {
-    background: #f8f9fa;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 12px;
     border-radius: 8px;
     display: flex;
@@ -258,13 +264,14 @@ body {
 }
 
 .stat-item:hover {
-    background: #e9ecef;
+    background: #1e293b;
+    border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
 
 .stat-label {
     font-size: 0.85em;
-    color: #6c757d;
+    color: #94a3b8;
     margin-bottom: 5px;
     font-weight: 500;
 }
@@ -272,15 +279,15 @@ body {
 .stat-value {
     font-size: 1.4em;
     font-weight: bold;
-    color: #495057;
+    color: #e2e8f0;
 }
 
 .stat-value.valid {
-    color: #28a745;
+    color: #22c55e;
 }
 
 .stat-value.anomaly {
-    color: #dc3545;
+    color: #ef4444;
 }
 
 /* 異常類型統計 */
@@ -295,20 +302,21 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: #f8f9fa;
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
-    border-left: 4px solid #dc3545;
+    border-left: 4px solid #ef4444;
 }
 
 .anomaly-label {
     font-weight: 500;
-    color: #495057;
+    color: #e2e8f0;
 }
 
 .anomaly-count {
     font-weight: bold;
-    color: #dc3545;
-    background: rgba(220, 53, 69, 0.1);
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.2);
     padding: 4px 8px;
     border-radius: 4px;
     min-width: 24px;
@@ -323,7 +331,8 @@ body {
 .health-bar {
     width: 100%;
     height: 20px;
-    background: #e9ecef;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 10px;
@@ -331,7 +340,7 @@ body {
 
 .health-fill {
     height: 100%;
-    background: linear-gradient(90deg, #28a745, #20c997);
+    background: linear-gradient(90deg, #22c55e, #10b981);
     border-radius: 10px;
     transition: all 0.5s ease;
     width: 100%;
@@ -340,7 +349,7 @@ body {
 .health-text {
     font-weight: bold;
     font-size: 1.1em;
-    color: #28a745;
+    color: #22c55e;
 }
 
 /* 響應式設計 */

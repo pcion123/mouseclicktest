@@ -6,6 +6,7 @@
     <title>滑鼠按鍵異常檢測工具</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/themes.css">
 </head>
 <body>
     <!-- 主容器 -->
@@ -28,6 +29,7 @@
                 <button id="stopBtn" class="btn btn-secondary" disabled>停止測試</button>
                 <button id="resetBtn" class="btn btn-warning">重置</button>
                 <button id="settingsBtn" class="btn btn-info">設定</button>
+                <button id="themeBtn" class="btn btn-small btn-secondary">🌙</button>
             </div>
         </header>
 
@@ -143,7 +145,10 @@
                 <div class="chart-header">
                     <h3>點擊時間軸</h3>
                     <div class="chart-controls">
-                        <button class="btn-small" id="clearChartBtn">清除圖表</button>
+                        <button class="btn-chart-clear" id="clearChartBtn" title="清除所有圖表數據">
+                            <span class="btn-icon">🗑️</span>
+                            <span class="btn-text">清除圖表</span>
+                        </button>
                     </div>
                 </div>
                 <canvas id="timelineChart" width="800" height="200"></canvas>
@@ -189,6 +194,29 @@
             <div class="modal-footer">
                 <button class="btn btn-primary" id="saveSettingsBtn">保存設定</button>
                 <button class="btn btn-secondary" id="cancelSettingsBtn">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 清除確認對話框 -->
+    <div class="modal" id="clearConfirmModal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3>🗑️ 確認清除</h3>
+                <button class="close-btn" id="closeClearConfirmBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="confirm-message">
+                    確定要清除所有圖表數據嗎？<br>
+                    <span class="warning-text">此操作無法撤銷。</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-chart-clear" id="confirmClearBtn">
+                    <span class="btn-icon">🗑️</span>
+                    <span class="btn-text">確認清除</span>
+                </button>
+                <button class="btn btn-secondary" id="cancelClearBtn">取消</button>
             </div>
         </div>
     </div>
