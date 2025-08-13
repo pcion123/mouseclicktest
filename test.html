@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>滑鼠檢測工具 - 測試頁面</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .pass { color: green; font-weight: bold; }
+        .fail { color: red; font-weight: bold; }
+        button { padding: 10px 20px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>滑鼠檢測工具 - 單機測試指南</h1>
+    
+    <div class="test-section">
+        <h2>1. 基本載入測試</h2>
+        <p>✅ 打開 <a href="index.html" target="_blank">主應用程式</a></p>
+        <p>✅ 檢查所有樣式是否正確載入</p>
+        <p>✅ 確認所有按鈕和控制項可見</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>2. 功能測試</h2>
+        <h3>A. 基本點擊測試</h3>
+        <ol>
+            <li>點擊「開始測試」按鈕</li>
+            <li>在藍色測試區域內點擊 10 次</li>
+            <li>觀察統計面板數據更新</li>
+            <li>檢查圖表是否繪製點擊軌跡</li>
+            <li>點擊「停止測試」</li>
+        </ol>
+        
+        <h3>B. 異常檢測測試</h3>
+        <ol>
+            <li><strong>重複點擊測試</strong>：快速雙擊多次，應看到紅色波紋</li>
+            <li><strong>連擊測試</strong>：500ms 內點擊 3 次以上</li>
+            <li><strong>間隔測試</strong>：觀察點擊間隔統計</li>
+        </ol>
+        
+        <h3>C. 模式切換測試</h3>
+        <ol>
+            <li>切換到「節奏測試」模式</li>
+            <li>切換到「耐久測試」模式</li>
+            <li>觀察模式描述變化</li>
+        </ol>
+    </div>
+    
+    <div class="test-section">
+        <h2>3. 設定功能測試</h2>
+        <ol>
+            <li>點擊「設定」按鈕打開設定對話框</li>
+            <li>修改檢測參數（如重複點擊窗口）</li>
+            <li>保存設定</li>
+            <li>測試新設定是否生效</li>
+            <li>重新整理頁面檢查設定是否保留</li>
+        </ol>
+    </div>
+    
+    <div class="test-section">
+        <h2>4. 瀏覽器相容性測試</h2>
+        <p>在以下瀏覽器中測試：</p>
+        <ul>
+            <li>✅ Chrome</li>
+            <li>✅ Firefox</li>
+            <li>✅ Edge</li>
+            <li>✅ Safari (如果可用)</li>
+        </ul>
+    </div>
+    
+    <div class="test-section">
+        <h2>5. 性能測試</h2>
+        <ol>
+            <li>進行 100+ 次點擊測試</li>
+            <li>觀察記憶體使用情況</li>
+            <li>檢查響應速度是否保持流暢</li>
+            <li>測試長時間運行穩定性</li>
+        </ol>
+    </div>
+    
+    <div class="test-section">
+        <h2>6. 數據功能測試</h2>
+        <ol>
+            <li>完成一次測試會話</li>
+            <li>檢查統計報告是否正確</li>
+            <li>驗證健康度評估是否合理</li>
+            <li>測試數據清除功能</li>
+        </ol>
+    </div>
+    
+    <div class="test-section">
+        <h2>快速檢查清單</h2>
+        <input type="checkbox"> 頁面正常載入<br>
+        <input type="checkbox"> 所有樣式正確顯示<br>
+        <input type="checkbox"> 基本點擊功能正常<br>
+        <input type="checkbox"> 異常檢測功能正常<br>
+        <input type="checkbox"> 統計數據更新正確<br>
+        <input type="checkbox"> 圖表繪製正常<br>
+        <input type="checkbox"> 設定功能可用<br>
+        <input type="checkbox"> 模式切換正常<br>
+        <input type="checkbox"> 數據持久性正常<br>
+        <input type="checkbox"> 響應式設計正常<br>
+    </div>
+    
+    <p><strong>測試完成後，如果所有項目都通過，表示項目可以正常單機運行！</strong></p>
+</body>
+</html>
