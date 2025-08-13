@@ -9,14 +9,14 @@
 ## 🖼️ 介面預覽
 
 ### 🌙 Dark Mode (深色主題)
-![滑鼠檢測工具 - Dark Mode](assets/screenshots/dark-mode-preview.png)
+![滑鼠檢測工具 - Dark Mode](assets/screenshots/dark-mode-preview.svg)
 
 ### ☀️ Light Mode (淺色主題)  
-![滑鼠檢測工具 - Light Mode](assets/screenshots/light-mode-preview.png)
+![滑鼠檢測工具 - Light Mode](assets/screenshots/light-mode-preview.svg)
 
 > 💡 **主題切換**: 點擊右上角的 🌙/☀️ 按鈕即可在深淺主題間自由切換
 
-> 📸 **截圖說明**: 如果您是項目維護者，請將實際截圖文件放置到 `assets/screenshots/` 目錄中。運行 `add-screenshots.bat` (Windows) 或 `add-screenshots.sh` (Linux/Mac) 查看詳細說明。
+> 📸 **截圖說明**: 上方為 SVG 格式的界面預覽圖。如需更新為實際截圖，請將 PNG/JPG 文件放置到 `assets/screenshots/` 目錄中。
 
 ## ✨ 主要特色
 
